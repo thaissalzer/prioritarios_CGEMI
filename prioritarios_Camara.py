@@ -73,4 +73,6 @@ if projetos:
     df = pd.DataFrame(projetos, columns=colunas)
     # Configurar a coluna de link como clique em Streamlit
     df['link'] = df['link'].apply(lambda x: f"{x}")
-    st.dataframe(df)
+    
+df['dataUltimaTramitacao'] = pd.to_datetime(df['dataUltimaTramitacao'], errors='coerce').dt.strftime('%Y-%m-%d')
+st.dataframe(df)
